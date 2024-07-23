@@ -1,0 +1,287 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #cccccc;
+  font-size: 14px;
+}
+
+.page {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: flex-start;
+  min-height: 1.75rem;
+  width: auto;
+  color: #e4e7e6;
+  border: 1px solid #c0c9d6;
+  background-color: #2d4976;
+  background-image: url("../images/arrow.svg");
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+  background-color: #2d4976;
+}
+
+.header .btn {
+  margin: 10px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 250px 1fr 250px;
+}
+
+.left-area {
+  padding: 5px;
+}
+
+.account-side {
+  width: 100%;
+  height: 100px;
+  background-color: #ffffff;
+  border: 1px solid #b4b4b4;
+  border-radius: 5px;
+}
+
+.block-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 36px;
+  padding: 6px;
+  border-bottom: 1px solid #b4b4b4;
+  color: #757575;
+  text-transform: uppercase;
+}
+
+.block-header .title {
+  margin-left: 4px;
+}
+
+.block-header .icon--account:before {
+  font-size: 18px;
+}
+
+.block-header .icon + .icon {
+  margin-left: 10px;
+}
+
+.block-header .left {
+  display: flex;
+  align-items: center;
+}
+
+.block-header .right {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.block-header .right .icon {
+  font-size: 18px;
+}
+
+.account-list {
+  color: #212121;
+  padding: 6px;
+}
+
+.account-option + .account-option {
+  margin-top: 6px;
+}
+
+.account-option {
+  display: flex;
+  justify-content: space-between;
+}
+
+.currency,
+.amount {
+  color: #2d4976;
+}
+
+.account-option .negative {
+  color: #ff0000;
+}
+
+.bet-cart {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #b4b4b4;
+  border-radius: 5px;
+  margin-top: 6px;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.tab {
+  position: relative;
+}
+
+.tab.selected:after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #2d4976;
+}
+
+.bet-cart .container {
+  padding: 6px;
+}
+
+.category {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bet-choice {
+  line-height: 28px;
+  padding-left: 6px;
+  margin: 6px 0;
+  border-left: 3px solid #2d4976;
+}
+
+.icon--clear {
+  margin-left: 6px;
+}
+
+.icon--arrow-down:before,
+.icon--clear:before,
+.icon--clear-solid:before {
+  color: #757575;
+}
+
+.form-bet {
+  position: relative;
+}
+
+.form-bet .currency {
+  position: absolute;
+  left: 6px;
+  line-height: 30px;
+}
+
+.text-box-bet {
+  height: 30px;
+  width: 100%;
+  border: 1px solid #2d4976;
+  border-radius: 3px;
+  padding-right: 30px;
+  text-align: right;
+}
+
+.form-bet .icon {
+  position: absolute;
+  right: 6px;
+  top: 5px;
+}
+
+.payout {
+  display: flex;
+  justify-content: space-between;
+  line-height: 30px;
+}
+
+.quick-bet {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 30px;
+  grid-gap: 2px;
+  margin: 6px 0;
+}
+
+.btn-quick-bet {
+  background-color: #f2f2f2;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #212121;
+  text-align: center;
+  line-height: 30px;
+}
+
+.bet-cart .btn {
+  width: 100%;
+}
+
+.bet-cart .btn + .btn {
+  margin-top: 6px;
+}
+
+.bet-info,
+.product-name {
+  margin: 4px 0;
+  color: #757575;
+}
+
+.btn-bet {
+  background: #b6403a;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.btn-clear {
+  background: #e6e6e6;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.bet-setting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.icon--bet-setting::before {
+  margin-right: 6px;
+  font-size: 18px;
+}
+
+.how-to-use {
+  position: relative;
+  text-decoration: none;
+  color: #212121;
+  margin-bottom: 10px;
+}
+
+.icon--help-outline {
+  position: absolute;
+  top: -3px;
+  margin-left: 6px;
+  font-size: 19px;
+}
+
+.main-area {
+  background-color: #ffffff;
+}
+
+.right-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

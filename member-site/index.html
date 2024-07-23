@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Demo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="HTML5 Example Page" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="styles/icons.css" />
+    <link rel="stylesheet" href="styles/demo.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="header">
+        <select class="form-select dropdown" aria-label="Theme">
+          <option value="1" selected>light</option>
+          <option value="2">dark</option>
+        </select>
+        <select class="form-select dropdown" aria-label="Languages">
+          <option value="1">English</option>
+          <option value="2">繁體中文</option>
+          <option value="3">日本語</option>
+          <option value="4">Tiếng Việt</option>
+        </select>
+        <button class="btn btn-secondary">Result</button>
+        <select class="form-select dropdown" aria-label="Odds">
+          <option value="1" selected>Decimal Odds</option>
+          <option value="2">Malay Odds</option>
+          <option value="2">Hong Kong Odds</option>
+        </select>
+        <button class="btn btn-secondary">Quick Bet</button>
+      </div>
+      <div class="content">
+        <div class="left-area">
+          <div class="account-side">
+            <div class="block-header">
+              <div class="left">
+                <span class="icon icon--account"></span>
+                <div class="title">Supertest</div>
+              </div>
+
+              <div class="right">
+                <span class="icon icon--refresh"></span>
+                <span class="icon icon--email"></span>
+                <span class="icon icon--arrow-down"></span>
+              </div>
+            </div>
+            <div class="account-list">
+              <div class="account-option">
+                <div class="text">Bet Credit</div>
+                <div class="value">
+                  <span class="currency">UUS</span>
+                  <span class="amount">1,871</span>
+                </div>
+              </div>
+              <div class="account-option">
+                <div class="text">Cash Balance</div>
+                <div class="value">
+                  <span class="currency">UUS</span>
+                  <span class="amount negative">-328</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bet-cart">
+            <div class="block-header">
+              <ul class="tabs">
+                <li class="tab selected">Bet Slip</li>
+                <li class="tab">Bet List</li>
+              </ul>
+            </div>
+            <div class="container">
+              <div class="category">
+                SABA.Games / Big Small
+                <div>
+                  <span class="icon icon--arrow-down"></span>
+                  <span class="icon icon--clear"></span>
+                </div>
+              </div>
+              <div class="bet-choice">Small @ <strong>1.96</strong> (Dec)</div>
+
+              <div class="form-bet">
+                <span class="currency">UUS</span>
+                <input class="text-box-bet" type="text" placeholder="10 - 10" />
+                <span class="icon icon--clear-solid"></span>
+              </div>
+
+              <div class="payout">
+                <span>Payout</span>
+                <span>0.00</span>
+              </div>
+
+              <div class="quick-bet">
+                <a class="btn-quick-bet" href="#">Min</a>
+                <a class="btn-quick-bet" href="#">+50</a>
+                <a class="btn-quick-bet" href="#">+100</a>
+                <a class="btn-quick-bet" href="#">Max</a>
+              </div>
+              <div class="bet-info">Big Small Round 10876</div>
+              <div class="product-name">SABA.Games</div>
+              <button class="btn btn-bet">Bet</button>
+              <button class="btn btn-clear">Clear All</button>
+              <div class="bet-setting">
+                <span class="icon icon--bet-setting"></span> Bet Settings
+              </div>
+              <hr />
+              <a class="how-to-use" href="#"
+                >How to Use <span class="icon icon--help-outline"></span
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="main-area"></div>
+        <div class="right-area">
+          <div class="banner-1">
+            <img src="images/1.png" alt="Banner 1" />
+          </div>
+          <div class="banner-2">
+            <img src="images/2.png" alt="Banner 2" />
+          </div>
+          <div class="banner-3">
+            <img src="images/3.png" alt="Banner 3" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+/* Icons */
+@font-face {
+  font-family: "iconfont-asia2022";
+  src: url("../fonts/iconfont-asia2022.woff") format("woff");
+}
+
+.icon:not(.c-gc-icon)::before {
+  font-family: "iconfont-asia2022";
+}
+
+.icon--account::before {
+  content: "\EA01";
+}
+
+.icon--refresh::before {
+  content: "\EA40";
+}
+
+.icon--email::before {
+  content: "\EA1F";
+}
+
+.icon--arrow-down::before {
+  content: "\EA07";
+}
+
+.icon--clear-solid::before {
+  content: "\EA14";
+}
+
+.icon--bet-setting::before {
+  content: "\EA54";
+}
+
+.icon--clear::before {
+  content: "\EA15";
+}
+
+.icon--help-outline::before {
+  content: "\EA28";
+}
+
+/* End */

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <button style="margin-top: 200px; margin-left: 200px;" id="btn-place-bet" type="button"
+        onclick="placeBet();">Bet</button>
+</body>
+<script type="text/javascript">
+    function getOffset(element) {
+        const rect = element.getBoundingClientRect();
+        return {
+            left: rect.left + window.scrollX + rect.width / 2,
+            top: rect.top + window.scrollY + rect.height + 3,
+
+        };
+    }
+
+    function placeBet() {
+        const placeBetBtn = document.getElementById("btn-place-bet");
+        const placeBetPosition = getOffset(placeBetBtn);
+        console.log("child", placeBetPosition);
+
+        window.parent.postMessage({
+            name: "placeBet",
+            data: {
+                position: placeBetPosition
+            }
+        }, "*");
+    }
+</script>
+
+</html>
