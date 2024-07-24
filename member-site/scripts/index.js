@@ -35,7 +35,6 @@ const index = {
         oddsValue: document.getElementById("odds-value"),
     },
     onLoad: async () => {
-        index.registerEvents();
         await index.doSSO();
     },
     doSSO: async () => {
@@ -64,14 +63,11 @@ const index = {
             operatorToken: "ONEworks1Token",
         };
 
-        const redirectLink = document.getElementById("redirect-url");
-        const gameIframe = document.getElementById("game-iframe");
+        const gameIframe = document.getElementById("remote-iframe");
 
         const ssoResult = (await axios.post("https://gamelobby-simulator.lumigame.com/signin/sso", request)).data;
         console.log(ssoResult);
         if (ssoResult.redirectUrl) {
-            redirectLink.innerHTML = ssoResult.redirectUrl;
-            redirectLink.href = ssoResult.redirectUrl;
             gameIframe.src = ssoResult.redirectUrl;
 
             await index.assignBalance(playerId, playerBalance, request.currency, request.siteId);
@@ -194,3 +190,4 @@ const iframeCommunicator = {
 };
 
 iframeCommunicator.registerEvents();
+index.onLoad();
