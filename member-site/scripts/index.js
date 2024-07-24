@@ -6,16 +6,33 @@ function getOffset(element) {
     };
 }
 
+function formatNumber(number) {
+    return new Intl.NumberFormat().format(number);
+}
+
 // Member Site
 const index = {
+    betContext: {
+        amount: 0,
+        choiceId: 0,
+        choiceName: "",
+        position: { top: 0, left: 0 },
+        gameName: "",
+        gameRoundId: 0,
+        odds: 0,
+    },
     elements: {
-        bettingBoard: document.getElementById("betting-board-fly"),
+        bettingBoardFly: document.getElementById("betting-board-fly"),
         sgGameIframe: document.getElementById("sg-game-iframe"),
         btnFlyBet: document.getElementById("btnFlyBet"),
         txtBetValue: document.getElementById("txtBetValue"),
         choiceName: document.getElementById("chocie-name"),
         gameName: document.getElementById("game-name"),
         gameRoundId: document.getElementById("game-round-id"),
+        playerBalance: document.getElementById("player-balance"),
+        bettingBoardLeft: document.getElementById("betting-board-left"),
+        bettingBoardContent: document.getElementById("betting-board"),
+        oddsValue: document.getElementById("odds-value"),
     },
     onLoad: async () => {
         index.registerEvents();
@@ -69,20 +86,27 @@ const index = {
             )}&currency=${currency}&siteId=${siteId}`
         );
     },
-    showBettingBoard: ({ amount, choiceId, choiceName, position, gameName, gameRoundId }) => {
+    showBettingBoard: (betContext) => {
         const gameFrameOffset = getOffset(index.elements.sgGameIframe);
-        const betBoardElement = index.elements.bettingBoard;
-        betBoardElement.style.top = gameFrameOffset.top + position.top + "px";
-        betBoardElement.style.left = gameFrameOffset.left + position.left + "px";
+        const betBoardElement = index.elements.bettingBoardFly;
+        betBoardElement.style.top = gameFrameOffset.top + betContext.position.top + "px";
+        betBoardElement.style.left = gameFrameOffset.left + betContext.position.left + "px";
         betBoardElement.style.display = "block";
 
-        index.elements.txtBetValue.value = amount;
-        index.elements.choiceName.innerHTML = choiceName;
-        index.elements.gameName.innerHTML = gameName;
-        index.elements.gameRoundId.innerHTML = gameRoundId;
+        index.elements.txtBetValue.value = betContext.amount;
+        index.elements.choiceName.innerHTML = betContext.choiceName;
+        index.elements.gameName.innerHTML = betContext.gameName;
+        index.elements.gameRoundId.innerHTML = betContext.gameRoundId;
+        index.elements.oddsValue.innerText = betContext.odds;
+        index.setElementsText("payout-value", formatNumber(betContext.amount * betContext.odds));
+
+        index.elements.bettingBoardLeft.innerHTML = "";
+        index.elements.bettingBoardLeft.appendChild(index.elements.bettingBoardContent.cloneNode(true));
+        index.betContext = betContext;
     },
     hideBettingBoard: () => {
-        index.elements.bettingBoard.style.display = "none";
+        index.elements.bettingBoardFly.style.display = "none";
+        index.elements.bettingBoardLeft.innerHTML = "";
     },
     changeOddsType: (element) => {
         iframeCommunicator.postMessageToIframe({
@@ -119,6 +143,24 @@ const index = {
             },
         });
     },
+    setPlayerBalance: (balance) => {
+        index.elements.playerBalance.innerText = balance;
+    },
+    setElementsText: (elementClass, text) => {
+        [...document.getElementsByClassName(elementClass)].forEach((element, index, array) => {
+            element.innerText = text;
+        });
+    },
+    setElementsValue: (elementClass, value) => {
+        [...document.getElementsByClassName(elementClass)].forEach((element, index, array) => {
+            element.value = value;
+        });
+    },
+    changeBetAmount: (e) => {
+        console.log(e.value);
+        index.setElementsText("payout-value", formatNumber(index.betContext.odds * e.value));
+        index.setElementsValue("text-box-bet", e.value);
+    },
 };
 
 const iframeCommunicator = {
@@ -132,9 +174,16 @@ const iframeCommunicator = {
     handleIframeMessages: (event) => {
         const message = event.data;
         if (message.from === "iframe") {
-            if (message.name === "placeBet") {
-                console.log("parent", message);
-                index.showBettingBoard(message.data);
+            console.log("parent", message);
+
+            switch (message.name) {
+                case "placeBet":
+                    index.showBettingBoard(message.data);
+                    break;
+
+                case "syncBalance":
+                    index.setPlayerBalance(formatNumber(message.data.balance));
+                    break;
             }
         }
     },

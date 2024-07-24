@@ -248,10 +248,18 @@ body {
   margin-top: 10px;
 }
 
+.btn-bet:hover {
+  background: #eb4138;
+}
+
 .btn-clear {
   background: #e6e6e6;
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+.btn-clear:hover {
+  background: rgb(168, 168, 168);
 }
 
 .bet-setting {

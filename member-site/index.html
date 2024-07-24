@@ -55,7 +55,7 @@
               <div class="text">Bet Credit</div>
               <div class="value">
                 <span class="currency">UUS</span>
-                <span class="amount">1,871</span>
+                <span class="amount" id="player-balance">1,871</span>
               </div>
             </div>
             <div class="account-option">
@@ -76,8 +76,8 @@
             </ul>
           </div>
           <div class="container">
-            <div class="betting-board-left">
-              <div class="category">
+            <div class="betting-board-left" id="betting-board-left">
+              <!-- <div class="category">
                 SABA.Games / Big Small
                 <div>
                   <span class="icon icon--arrow-down"></span>
@@ -95,17 +95,10 @@
                 <span>Payout</span>
                 <span>0.00</span>
               </div>
-
-              <div class="quick-bet">
-                <a class="btn-quick-bet" href="#">Min</a>
-                <a class="btn-quick-bet" href="#">+50</a>
-                <a class="btn-quick-bet" href="#">+100</a>
-                <a class="btn-quick-bet" href="#">Max</a>
-              </div>
               <div class="bet-info">Big Small Round 10876</div>
               <div class="product-name">SABA.Games</div>
               <button class="btn btn-bet">Bet</button>
-              <button class="btn btn-clear">Clear All</button>
+              <button class="btn btn-clear">Clear All</button> -->
             </div>
             <div class="bet-setting">
               <span class="icon icon--bet-setting"></span> Bet Settings
@@ -133,35 +126,31 @@
   </div>
 
   <div id="betting-board-fly" style="display: none;">
-    <div class="category">
-      SABA.Games / <span id="game-name"></span>
-      <div>
-        <span class="icon icon--arrow-down"></span>
-        <span class="icon icon--clear" onclick="index.hideBettingBoard();"></span>
+    <div id="betting-board">
+      <div class="category">
+        SABA.Games / <span id="game-name"></span>
+        <div>
+          <span class="icon icon--arrow-down"></span>
+          <span class="icon icon--clear" onclick="index.hideBettingBoard();"></span>
+        </div>
       </div>
-    </div>
-    <div class="bet-choice"><span id="chocie-name">Small</span> @ <strong>1.96</strong> (Dec)</div>
+      <div class="bet-choice"><span id="chocie-name">Small</span> @ <strong id="odds-value">1.96</strong> (Dec)</div>
 
-    <div class="form-bet">
-      <span class="currency">UUS</span>
-      <input class="text-box-bet" type="text" value="1" id="txtBetValue" />
-    </div>
+      <div class="form-bet">
+        <span class="currency">UUS</span>
+        <input class="text-box-bet" type="number" value="1" id="txtBetValue" onchange="index.changeBetAmount(this);"
+          onkeydown="index.changeBetAmount(this);" />
+      </div>
 
-    <div class="payout">
-      <span>Payout</span>
-      <span>0.00</span>
+      <div class="payout">
+        <span>Payout</span>
+        <span class="payout-value">0.00</span>
+      </div>
+      <div class="bet-info">Big Small Round <span id="game-round-id"></span></div>
+      <div class="product-name">SABA.Games</div>
+      <button class="btn btn-bet" id="btnFlyBet" onclick="index.placeBet();">Bet</button>
+      <button class="btn btn-clear" onclick="index.hideBettingBoard();">Clear All</button>
     </div>
-
-    <div class="quick-bet">
-      <a class="btn-quick-bet" href="#">Min</a>
-      <a class="btn-quick-bet" href="#">+50</a>
-      <a class="btn-quick-bet" href="#">+100</a>
-      <a class="btn-quick-bet" href="#">Max</a>
-    </div>
-    <div class="bet-info">Big Small Round <span id="game-round-id"></span></div>
-    <div class="product-name">SABA.Games</div>
-    <button class="btn btn-bet" id="btnFlyBet" onclick="index.placeBet();">Bet</button>
-    <button class="btn btn-clear">Clear All</button>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
