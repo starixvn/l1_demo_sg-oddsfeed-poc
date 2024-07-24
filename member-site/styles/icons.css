@@ -24,6 +24,10 @@
   content: "\EA07";
 }
 
+.icon--arrow-down {
+  margin-left: 20px;
+}
+
 .icon--clear-solid::before {
   content: "\EA14";
 }

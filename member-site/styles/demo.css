@@ -160,7 +160,7 @@ body {
 
 .category {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
 }
 
 .bet-choice {
@@ -311,5 +311,9 @@ body {
 
 #betting-board-fly .btn-clear {
   margin-bottom: 0px;
+}
+
+.bet-board-icons {
+  margin-left: 25px;
 }
 
