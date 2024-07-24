@@ -28,12 +28,24 @@
         console.log("child", placeBetPosition);
 
         window.parent.postMessage({
+            from: "iframe",
             name: "placeBet",
             data: {
-                position: placeBetPosition
+                amount: 10,
+                choiceId: 1,
+                choiceName: "Small",
+                position: placeBetPosition,
+                gameName: "Big Small",
+                gameRoundId: 1111
             }
         }, "*");
     }
+
+    window.addEventListener("message", (event) => {
+        if (event.data.from === "ms") {
+            console.log("child received postMessage", event.data);
+        }
+    }, false);
 </script>
 
 </html>
