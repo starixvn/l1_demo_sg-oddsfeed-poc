@@ -109,7 +109,7 @@
         </div>
       </div>
       <div class="main-area">
-        <iframe id="sg-iframe" width="100%" src=""></iframe>
+        <iframe id="sg-iframe" width="100%" height="300px" src=""></iframe>
         <!-- <iframe id="test-iframe" width="100%" height="100px" src="./sg-game.html"></iframe> -->
       </div>
       <div class="right-area">
@@ -129,13 +129,13 @@
   <div id="betting-board-fly" style="display: none;">
     <div id="betting-board">
       <div class="category">
-        SABA.Games /&nbsp<span id="game-name"></span>
+        SABA.Games /&nbsp<span class="game-name"></span>
         <div class="bet-board-icons">
           <span class="icon icon--arrow-down"></span>
           <span class="icon icon--clear" onclick="index.hideBettingBoard();"></span>
         </div>
       </div>
-      <div class="bet-choice"><span id="chocie-name">Small</span> @ <strong id="odds-value">1.96</strong> (Dec)</div>
+      <div class="bet-choice"><span id="chocie-name">Small</span> @ <strong id="odds-value">1.96</strong></div>
 
       <div class="form-bet">
         <!-- <span class="currency">UUS</span> -->
@@ -147,7 +147,7 @@
         <span>Payout</span>
         <span class="payout-value">0.00</span>
       </div>
-      <div class="bet-info">Big Small Round <span id="game-round-id"></span></div>
+      <div class="bet-info"><span class="game-name"></span> Round <span id="game-round-id"></span></div>
       <div class="product-name">SABA.Games</div>
       <button class="btn btn-bet" id="btnFlyBet" onclick="index.placeBet();">Bet</button>
       <button class="btn btn-clear" onclick="index.hideBettingBoard();">Clear All</button>
@@ -159,7 +159,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"
     integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src='./scripts/index.js?v=2' type="text/javascript"></script>
+  <script src='./scripts/index.js?v=3' type="text/javascript"></script>
 </body>
 
 </html>

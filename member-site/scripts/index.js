@@ -87,6 +87,7 @@ const index = {
         );
     },
     showBettingBoard: (betContext) => {
+        betContext.odds = Math.abs(betContext.odds);
         index.hideBettingBoard();
         const gameFrameOffset = getOffset(index.elements.sgIframe);
         const betBoardElement = index.elements.bettingBoardFly;
@@ -96,9 +97,9 @@ const index = {
 
         index.elements.txtBetValue.value = betContext.amount;
         index.elements.choiceName.innerHTML = betContext.choiceName;
-        index.elements.gameName.innerHTML = betContext.gameName;
         index.elements.gameRoundId.innerHTML = betContext.gameRoundId;
         index.elements.oddsValue.innerText = betContext.odds;
+        index.setElementsText("game-name", betContext.gameName);
         index.setElementsText("payout-value", formatNumber(betContext.amount * betContext.odds));
 
         index.elements.bettingBoardLeft.innerHTML = "";
