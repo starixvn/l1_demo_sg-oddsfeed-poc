@@ -6,6 +6,11 @@ function getOffset(element) {
     };
 }
 
+function randomIntFromInterval(min, max) {
+    // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 function formatNumber(number) {
     return new Intl.NumberFormat().format(number);
 }
@@ -38,9 +43,9 @@ const index = {
         await index.doSSO();
     },
     doSSO: async () => {
-        const playerId = 28589;
+        const playerId = randomIntFromInterval(1000, 99999);
         const appType = 2;
-        const playerBalance = 2600;
+        const playerBalance = 10000;
         const request = {
             playerId: playerId,
             playerName: `username_${playerId}`,
@@ -64,8 +69,8 @@ const index = {
         };
 
         const gameIframe = document.getElementById("remote-iframe");
-
-        const ssoResult = (await axios.post("https://gamelobby-simulator.lumigame.com/signin/sso", request)).data;
+        const gameLobbySimulatorUrl = "https://l1-glbs1.lumigame.com";
+        const ssoResult = (await axios.post(`${gameLobbySimulatorUrl}/signin/sso`, request)).data;
         console.log(ssoResult);
         if (ssoResult.redirectUrl) {
             gameIframe.src = ssoResult.redirectUrl;
@@ -106,36 +111,40 @@ const index = {
     },
     changeOddsType: (element) => {
         iframeCommunicator.postMessageToIframe({
-            name: "changeOddsType",
-            value: element.value,
+            from: "ms-parent",
+            action: "changeOddsType",
+            data: element.value,
         });
     },
     changeTheme: (element) => {
         iframeCommunicator.postMessageToIframe({
-            name: "changeTheme",
-            value: element.value,
+            from: "ms-parent",
+            action: "changeTheme",
+            data: element.value,
         });
     },
     changeLanguage: (element) => {
         iframeCommunicator.postMessageToIframe({
-            name: "changeLanguage",
-            value: element.value,
+            from: "ms-parent",
+            action: "changeLanguage",
+            data: element.value,
         });
     },
     changeQuickBet: () => {
         iframeCommunicator.postMessageToIframe({
-            name: "changeQuickBet",
+            from: "ms-parent",
+            action: "changeQuickBet",
         });
     },
     placeBet: () => {
         const amount = index.elements.txtBetValue.value;
 
         iframeCommunicator.postMessageToIframe({
-            from: "parent",
-            name: "placeBet",
-            bet: {
+            from: "ms-parent",
+            action: "placeBet",
+            data: {
                 amount,
-                choice: index.elements.choiceName.innerText,
+                choice: index.betContext.choiceId,
             },
         });
     },
@@ -184,7 +193,7 @@ const iframeCommunicator = {
         }
     },
     postMessageToIframe: (message) => {
-        message.from = "ms";
+        message.from = "ms-parent";
         iframeCommunicator.iframes.gameIframe.contentWindow.postMessage(message, "*");
     },
 };
