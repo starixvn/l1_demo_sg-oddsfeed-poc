@@ -49,7 +49,7 @@ const index = {
         const request = {
             playerId: playerId,
             playerName: `username_${playerId}`,
-            language: "vi-VN",
+            language: "en-US",
             currency: "$US",
             seq: "d,y,lumi",
             siteId: "4100300",
