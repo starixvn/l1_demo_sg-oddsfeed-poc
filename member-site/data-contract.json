@@ -1,3 +1,11 @@
 {
-    "change-language": { "from": "ms", "action": "change-language", "data": "vi" }
+    "change-language": { "from": "ms-site", "action": "change-language", "data": { "key": "vi" } },
+    "change-quick-bet": { "from": "ms-site", "action": "change-quick-bet", "data": { "isSetQuickBet": true, "betValue": 100 } },
+    "change-theme": { "from": "ms-site", "action": "change-theme", "data": {} },
+    "change-odds-type": { "from": "ms-site", "action": "change-odds-type", "data": {} },
+    "click-on-bet-option": { "from": "sg-iframe", "action": "click-on-bet-option", "data": {} },
+    "settle-game-round": { "from": "ms-iframe", "action": "settle-game-round", "data": {} },
+    "confirm-place-bet": { "from": "ms-site", "action": "confirm-place-bet", "data": {} },
+    "game-error": { "from": "ms-iframe", "action": "game-error", "data": {} },
+    "place-bet-success": { "from": "ms-iframe", "action": "change-language", "data": {} }
 }

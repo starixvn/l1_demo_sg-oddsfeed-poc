@@ -28,7 +28,7 @@ const index = {
     },
     elements: {
         bettingBoardFly: document.getElementById("betting-board-fly"),
-        sgGameIframe: document.getElementById("sg-game-iframe"),
+        sgIframe: document.getElementById("sg-iframe"),
         btnFlyBet: document.getElementById("btnFlyBet"),
         txtBetValue: document.getElementById("txtBetValue"),
         choiceName: document.getElementById("chocie-name"),
@@ -68,12 +68,11 @@ const index = {
             operatorToken: "ONEworks1Token",
         };
 
-        const gameIframe = document.getElementById("remote-iframe");
         const gameLobbySimulatorUrl = "https://l1-glbs1.lumigame.com";
         const ssoResult = (await axios.post(`${gameLobbySimulatorUrl}/signin/sso`, request)).data;
         console.log(ssoResult);
         if (ssoResult.redirectUrl) {
-            gameIframe.src = ssoResult.redirectUrl;
+            index.elements.sgIframe.src = ssoResult.redirectUrl;
 
             await index.assignBalance(playerId, playerBalance, request.currency, request.siteId);
         }
@@ -88,7 +87,8 @@ const index = {
         );
     },
     showBettingBoard: (betContext) => {
-        const gameFrameOffset = getOffset(index.elements.sgGameIframe);
+        index.hideBettingBoard();
+        const gameFrameOffset = getOffset(index.elements.sgIframe);
         const betBoardElement = index.elements.bettingBoardFly;
         betBoardElement.style.top = gameFrameOffset.top + betContext.position.top + "px";
         betBoardElement.style.left = gameFrameOffset.left + betContext.position.left + "px";
