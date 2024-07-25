@@ -87,6 +87,7 @@ const index = {
         );
     },
     showBettingBoard: (betContext) => {
+        betContext.amount = 10;
         betContext.odds = Math.abs(betContext.odds);
         index.hideBettingBoard();
         const gameFrameOffset = getOffset(index.elements.sgIframe);
