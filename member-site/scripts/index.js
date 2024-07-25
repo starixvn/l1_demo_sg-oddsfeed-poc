@@ -79,7 +79,7 @@ const index = {
     },
     assignBalance: async (playerId, balance, currency, siteId) => {
         await axios.post(
-            `https://owapi-simulator.lumigame.com/SabaClub/SetDefaultBalance?playerId=${encodeURIComponent(
+            `https://l1-ows1.lumigame.com/SabaClub/SetDefaultBalance?playerId=${encodeURIComponent(
                 playerId
             )}&operator=ow&balance=${balance}&systemType=SC1&username=username_${encodeURIComponent(
                 playerId
@@ -144,9 +144,11 @@ const index = {
             action: "placeBet",
             data: {
                 amount,
-                choice: index.betContext.choiceId,
+                choice: index.betContext.choiceName,
             },
         });
+
+        index.hideBettingBoard();
     },
     setPlayerBalance: (balance) => {
         index.elements.playerBalance.innerText = balance;
