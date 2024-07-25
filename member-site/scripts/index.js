@@ -170,7 +170,7 @@ const index = {
 
 const iframeCommunicator = {
     iframes: {
-        gameIframe: document.getElementById("sg-game-iframe"),
+        gameIframe: document.getElementById("sg-iframe"),
     },
     registerEvents: () => {
         window.removeEventListener("message", iframeCommunicator.handleIframeMessages, false);
