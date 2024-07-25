@@ -146,6 +146,8 @@ const index = {
             data: {
                 amount,
                 choice: index.betContext.choiceName,
+                gameName: index.betContext.gameName,
+                gameRoundId: index.betContext.gameRoundId,
             },
         });
 
