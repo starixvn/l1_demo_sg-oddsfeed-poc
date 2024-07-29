@@ -46,6 +46,10 @@ const index = {
         const playerId = randomIntFromInterval(1000, 99999);
         const appType = 2;
         const playerBalance = 10000;
+        const operator = {
+            operatorId: "PFF",
+            operatorSecret: "PFF123",
+        };
         const request = {
             playerId: playerId,
             playerName: `username_${playerId}`,
@@ -56,20 +60,18 @@ const index = {
             siteName: "lumi",
             ip: "",
             browserUserAgent: window.navigator.userAgent,
-            auth: {
-                operatorId: "ONEworks1",
-                operatorSecret: "ONEworks1@20luminet&",
-            },
+            auth: { ...operator },
             gameId: 0,
             domain: "example.com",
             appType: appType,
             partner: "1W",
             disableJackpotGames: false,
-            operatorToken: "ONEworks1Token",
+            operatorToken: "PFFToken",
         };
 
-        const gameLobbySimulatorUrl = "https://l1-glbs1.lumigame.com";
-        const ssoResult = (await axios.post(`${gameLobbySimulatorUrl}/signin/sso`, request)).data;
+        const gameLobbySimulatorUrl = "https://l1sitglbs.sgamesuat.com";
+        const response = await axios.post(`${gameLobbySimulatorUrl}/signin/sso`, request);
+        const ssoResult = response.data;
         console.log(ssoResult);
         if (ssoResult.redirectUrl) {
             index.elements.sgIframe.src = ssoResult.redirectUrl;
@@ -79,9 +81,9 @@ const index = {
     },
     assignBalance: async (playerId, balance, currency, siteId) => {
         await axios.post(
-            `https://l1-ows1.lumigame.com/SabaClub/SetDefaultBalance?playerId=${encodeURIComponent(
+            `https://l1sitows.sgamesuat.com/SabaClub/SetDefaultBalance?playerId=${encodeURIComponent(
                 playerId
-            )}&operator=ow&balance=${balance}&systemType=SC1&username=username_${encodeURIComponent(
+            )}&operator=pff&balance=${balance}&systemType=SC1&username=username_${encodeURIComponent(
                 playerId
             )}&currency=${currency}&siteId=${siteId}`
         );
